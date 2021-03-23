@@ -1,0 +1,29 @@
+Read: https://blog.golang.org/using-go-modules
+Read, Slice: https://blog.golang.org/slices-intro
+Read:  https://golang.org/pkg/io/ioutil/
+
+Todo1:
+    In "Applib" module add another package (folder) util. Create util.go and add functions 
+        func square(in int) int {..}  => this should return square of input number
+        func divide(a,b float32) (float32, error) {..}  => divide a/b. check for divide by error and return appropriate error
+    From program module call the applib/util and above 2 functions with error handling
+
+Todo2:
+    Add validations for other fields in NewCustomer() and return error. Assume error conditions
+	    ID     int
+	    Points int
+	    Level  CustomerLevel
+
+   
+Todo3:
+    Add 10 to 15 customers with mix of gold, silver platnium
+    In method StoreTofile add a feature to store only Gold & platinum
+
+
+Todo 4:
+    Add 10 to 15 customers all silver level and variable Points from 100 to 1000. Store to file.
+    Load from file and while loading if points are greater than 500 then make the customer Gold.
+    If the points are greater than 900 then make Customer platinum
+
+Do proper error handling
+

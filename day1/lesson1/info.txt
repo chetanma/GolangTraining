@@ -1,0 +1,24 @@
+mkdir lesson1
+cd lesson1
+go mod init lesson1
+
+#open VScode: code .
+#create main.go and other files
+#to run:
+go run main.go
+    or
+go run main.go file2.go file3.go
+    or 
+go build 
+./lesson (to run) | on windows it will be exe
+
+Things to do:
+
+# go on adding files and creates samples for 
+    variables & pointers
+    node.go: 
+        add function AppendToList(node Node), 
+        create a root node and append 5 to 10 nodes to the link list
+        add function traverse(node): This function should print all the values in sequence
+    Work on workers using go keyword and use sleep on main to wait on workers.
+    Work on workers using go keyword and use waitgroup for sync.

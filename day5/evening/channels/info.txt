@@ -1,0 +1,38 @@
+1. First start with basicchan.go file
+2. Then selectdemo
+3. Then merge
+4. Then look pipeline.go
+
+TODO:
+    Create a Sender/producer go routine that will generate Customer records over a channel.
+    Genrated customers will only be silver level. Give points in the range of 100 to 2000.
+    A chan of customer is returned. 
+    Create a worker "UpgrageLevelWorker" that will read from channel and Upgrate the Customer based on points.
+        If points of Customer above 800 then make that Customer gold. If points above 1500 then platinum
+        You should be able to launch multiple such workers
+        The logic to filter keep it in separate function value. Use higher order functions and function values. Like in Lesson2_B.
+    Create another worker "BonusPointsWorker" that will read from customer channel and give bonus points to Customer.
+        If gold customer then bonus points will be 10% of existing points.
+        If platinum customer then bonus points will be 25% of existing
+        Add bonus points to points in Customer.
+        You should be able to launch multiple such workers
+        The logic of bonus, keep it in separate function value. Use higher order functions and function values
+    Finally the end goroutine will read the customer channel and store customers in json file
+
+    The Pipeline:
+        Generator() <-chan Customer
+            UpgrageLevelWorker(cust <-chan Customer) <-chan Customer
+                BonusPointsWorker(cust <-chan Customer) <-chan Customer
+                    WriteOutputToJson
+
+Below shown with 3 workers each as example. C means channel
+    Generator(c)
+        |--->UpgrageLevelWorker--(C)>|             |-->BonusPointsWorker-(C)->|  
+        |--->UpgrageLevelWorker--(C)>|--merge-(C)->|-->BonusPointsWorker-(C)->|-->merge-(C)->ReadAndWriteToFileAsJson
+        |--->UpgrageLevelWorker--(C)>|             |-->BonusPointsWorker-(C)->|    
+
+
+
+Read the golang pipeline & context for further study:
+https://blog.golang.org/pipelines
+https://blog.golang.org/context

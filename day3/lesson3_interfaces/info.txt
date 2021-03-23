@@ -1,0 +1,9 @@
+TODO task 1:
+in repo.go
+
+implement CustomerRepo interface for types:
+    CustomerRepositoryJsonFile
+    CustomerRepoDummy
+
+    CustomerRepositoryJsonFile should take the data from a json CustomerRepositoryJsonFile
+    CustomerRepoDummy will take the data from in-memory
