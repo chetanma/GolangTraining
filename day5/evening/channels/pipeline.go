@@ -21,6 +21,7 @@ func SimpleWorkerPipeline() {
 }
 
 func merge(chans ...<-chan int) <-chan int {
+
 	ch := make(chan int)
 
 	go func() {
@@ -75,7 +76,7 @@ func Generator(vals ...int) <-chan int {
 	go func() {
 		defer close(ch)
 		for _, v := range vals {
-			ch <- v
+			ch <- v	
 		}
 	}()
 	return ch
